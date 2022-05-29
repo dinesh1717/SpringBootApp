@@ -1,8 +1,5 @@
 package com.bridgelabz.springdemoapp.controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SpringBootController {
@@ -16,5 +13,9 @@ public class SpringBootController {
 
         return "Hello Everyone";
     }
+    @GetMapping("/hello/query")
+    public String sayPosting(@RequestParam String firstName, @RequestParam String lastName) {
 
+        return "Hello " + firstName + " " + lastName;
+    }
 }
