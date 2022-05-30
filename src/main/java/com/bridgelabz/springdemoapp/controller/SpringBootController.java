@@ -3,6 +3,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SpringBootController {
+
+    /**
+     * UC1
+     * Using Get request method
+     * @return Hello Everyone
+     */
     @GetMapping("/hello")
     public String sayHello() {
         return "Hello Everyone";
@@ -12,10 +18,37 @@ public class SpringBootController {
     public String sayHelloDifferently() {
 
         return "Hello Everyone";
+
     }
+    /**
+     * UC2
+     *Make REST Call to show Hello
+     * - Use GET Request Method and pass name as
+     * query parameter
+     *
+     */
     @GetMapping("/hello/query")
     public String sayPosting(@RequestParam String firstName, @RequestParam String lastName) {
 
         return "Hello " + firstName + " " + lastName;
     }
+
+    /**
+     * UC3
+     * Make REST Call to show Hello
+     * Mark from BridgeLabz
+     * - Use GET Request Method and pass name as
+     */
+    //pathvaraiable
+
+    @GetMapping("/hello/{firstName}")
+    public String sayHello(@PathVariable String firstName) {
+        return "Hello " + firstName;
+    }
+
+    @GetMapping( {"/query2"})
+    public String sayHelloQuey(@RequestParam String fname,@RequestParam String lname){
+        return "Hello "+ fname +" "+lname + "!";
+    }
 }
+
