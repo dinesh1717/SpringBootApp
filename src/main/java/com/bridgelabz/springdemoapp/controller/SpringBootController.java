@@ -1,4 +1,5 @@
 package com.bridgelabz.springdemoapp.controller;
+import com.bridgelabz.springdemoapp.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,10 +17,9 @@ public class SpringBootController {
 
     @RequestMapping(value = {"/hello-w"}, method = RequestMethod.GET)
     public String sayHelloDifferently() {
-
         return "Hello Everyone";
-
     }
+
     /**
      * UC2
      *Make REST Call to show Hello
@@ -27,28 +27,19 @@ public class SpringBootController {
      * query parameter
      *
      */
+
     @GetMapping("/hello/query")
     public String sayPosting(@RequestParam String firstName, @RequestParam String lastName) {
-
         return "Hello " + firstName + " " + lastName;
     }
-
-    /**
-     * UC3
-     * Make REST Call to show Hello
-     * Mark from BridgeLabz
-     * - Use GET Request Method and pass name as
-     */
-    //pathvaraiable
 
     @GetMapping("/hello/{firstName}")
     public String sayHello(@PathVariable String firstName) {
         return "Hello " + firstName;
     }
 
-    @GetMapping( {"/query2"})
-    public String sayHelloQuey(@RequestParam String fname,@RequestParam String lname){
-        return "Hello "+ fname +" "+lname + "!";
+    @PostMapping("/hello/post")
+    public String sayPost(@RequestBody User user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName();
     }
 }
-
